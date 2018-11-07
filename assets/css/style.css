@@ -1,17 +1,16 @@
-.preButtons {
-  background: orange
-  color: white;
-  width: auto;
-  height 25px:
-  margin: 50px;
-}
-
 .postButtons {
   background: orange;
   color: white;
   border-radius: 5px;
   width: auto;
-  height 25px:
-  margin: 50px;
+  margin-right: 10px;
+  height: auto;
+}
+#format-div {
+  float:left;
+  margin: 10px;
+}
+#format-adiv {
+  float:left;
 
 }
