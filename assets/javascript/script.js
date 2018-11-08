@@ -1,4 +1,4 @@
-var topics = [];
+var topics = ["Cardi B", "Lil Yachty","Drake", "Eminem", "Kendrick Lamar", "J.Cole", "Lucas Joyner", "Travis Scott", "Post Malone", "Juice WRLD", "ASAP Rocky", "Logic", "Childish Gambino", "Nicki Minaj"];
 
 $(document).ready(function() {
 
@@ -20,23 +20,22 @@ $(document.body).on("click", ".postButtons", function() {
     var results = res.data
     console.log(results)
     $("#gif-section").empty();
+
+
     for (var i = 0; i < results.length; i++) {
 
       var newDiv = $("<div>");
       // results[i].rating;
       var p = $("<p>").text(`Rating:${results[i].rating}`);
 // initial src attribute to the still image
-      var newImg = $("<img>").attr("src",results[i].images.fixed_height_still.url);
+      var newImg = $("<img class='full'>").attr("src",results[i].images.fixed_height_still.url);
 
           newImg.attr("data-still", results[i].images.fixed_height_still.url);
           // data state of 'still' to use as a reference of the state
           newImg.attr("data-animate", results[i].images.fixed_height.url);
 // data state of 'still' to use as a reference of the state
           newImg.attr("data-state", "still");
-          newImg.attr({
-                      "class": "float-left",
-                      id: "format-img",
-                });
+
 
       p.attr("id", "format-img")
       newDiv.append(p);
@@ -111,6 +110,5 @@ if (state === "still") {
 });
 
 
-// document.ready closting bracket
+// document.ready closing bracket
 })
-// displayGifs();

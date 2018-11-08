@@ -7,10 +7,15 @@
   height: auto;
 }
 
-.gif-section {
-margin: 10
+
+#gif-section {
+  display:grid;
+  max-height: 100px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-gap: 25px;
 }
 
-#format-img {
-margin: 30px;
+.full {
+  width: 100%;
 }
