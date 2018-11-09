@@ -1,7 +1,91 @@
-.postButtons {
-  background: orange;
+h1{
+  font-family: 'Calligraffitti', cursive;
+font-size: 100px;
+text-align: center;
+}
+
+p {
+  font-family: 'Calligraffitti', cursive;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+img {
+  border: 2px solid black;
+}
+
+img:hover {
+  opacity: 0.6;
+}
+
+button:hover {
+  opacity: 0.9;
   color: white;
-  border-radius: 5px;
+}
+.postButtons:focus {
+  outline: 0;
+  color: white;
+}
+.download-text {
+  color: #DAA520;
+}
+
+#download {
+border: 1px solid black;
+padding: 7px;
+font-family: 'Abel', sans-serif;
+background: #BCC6CC;
+}
+
+#download:hover {
+  opacity: 0.9;
+  color: white;
+}
+
+#favorite {
+background: #BCC6CC;
+border: 1px solid black;
+padding: 7px;
+font-family: 'Abel', sans-serif;
+}
+
+#favorite:hover {
+  opacity: 0.9;
+  color: white;
+}
+
+#rating {
+  font-family: 'Abel', sans-serif;
+}
+
+.favorites-title {
+  font-family: 'Calligraffitti', cursive;
+}
+
+.no-display {
+  display: none;
+}
+
+#favorites {
+display: none;
+grid-template-columns: repeat(auto-fill, 80px);
+grid-template-rows: repeat(auto-fill, minmax(50px 75px));
+grid-gap: 5px;
+max-width: 570px;
+}
+
+
+
+
+.submitDiv button {
+  background: #DAA520;
+  display: block;
+  margin: auto;
+  font-size: 30px;
+}
+.postButtons {
+  background: #DAA520;
+  color: black;
   width: 100%;
   margin-right: 10px;
   height: auto;
@@ -18,7 +102,9 @@
 
 
 #gif-section {
-  display:grid;
+  display: grid;
+  justify-content: center;
+  align-items: start;
   max-height: 100px;
   grid-template-columns: repeat(auto-fit, minmax(150px, 250px));
   grid-template-rows: repeat(3, 1fr);
@@ -26,5 +112,6 @@
 }
 
 .full {
+  display:grid;
   width: 100%;
 }

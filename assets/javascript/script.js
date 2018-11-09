@@ -26,7 +26,7 @@ $(document.body).on("click", ".postButtons", function() {
 
       var newDiv = $("<div>");
       // results[i].rating;
-      var p = $("<p>").text(`Rating:${results[i].rating}`);
+      var p = $("<p>").html(`<span id="rating">Rating: ${results[i].rating}</span>&nbsp;&nbsp;&nbsp<span id="download" download-data="${results[i].images.original.mp4}">download</span>&nbsp;&nbsp;&nbsp;&nbsp<span id="favorite">favorite</span>`);
 // initial src attribute to the still image
       var newImg = $("<img class='full'>").attr("src",results[i].images.fixed_height_still.url);
 
@@ -36,17 +36,42 @@ $(document.body).on("click", ".postButtons", function() {
 // data state of 'still' to use as a reference of the state
           newImg.attr("data-state", "still");
 
-
       p.attr("id", "format-img")
       newDiv.append(p);
       newDiv.append(newImg);
       $("#gif-section").prepend(newDiv);
 
 
+
     }
   })
 
 });
+// function that forces the download button to work
+function forceDownload(url) {
+       var xhr = new XMLHttpRequest();
+       xhr.open("GET", url, true);
+       xhr.responseType = "blob";
+       xhr.onload = function () {
+           var urlCreator = window.URL || window.webkitURL;
+           var imageUrl = urlCreator.createObjectURL(this.response);
+           var tag = document.createElement('a');
+           tag.href = imageUrl;
+           tag.download = "";
+           document.body.appendChild(tag);
+           tag.click();
+           document.body.removeChild(tag);
+       }
+       xhr.send();
+   }
+
+// on click function that gets the download button to work
+   $(document).on("click", "#download", function () {
+      var url = $("#download").attr('download-data')
+      forceDownload(url)
+   })
+
+
 
 // function to create the buttons
 function renderButtons() {
@@ -66,6 +91,10 @@ function renderButtons() {
   }
 }
 
+
+
+
+
 // submit button event click
 $("#topic-submit").on("click", function(event) {
   event.preventDefault();
@@ -75,10 +104,16 @@ $("#topic-submit").on("click", function(event) {
   topics.push(topic);
 
   // Calling renderButtons which handles the processing of our topics array
-  renderButtons();
 
   //removes the visual text from the topic box
   $("#topic-input").val("")
+  // I wanted to make a rule where if the value of the search box is empty then don't render any buttons but it doesn't work
+// if ($("#topic-input").val().length == 0) {
+//   $("#topic-submit").attr('disabled', true;
+// } else {
+//   $("#topic-submit").attr('disabled', false);
+// }
+renderButtons();
 
 });
 
