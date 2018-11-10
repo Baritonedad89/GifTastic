@@ -1,10 +1,11 @@
-var topics = ["Cardi B", "Lil Yachty","Drake", "Eminem", "Kendrick Lamar", "J.Cole", "Lucas Joyner", "Travis Scott", "Post Malone", "Juice WRLD", "ASAP Rocky", "Logic", "Childish Gambino", "Nicki Minaj"];
+var topics = ["Cardi B", "Lil Yachty","Kayne West", "Jay-z","The Migos", "T.I.", "Drake", "Eminem", "Kendrick Lamar", "J.Cole", "Lucas Joyner", "Travis Scott", "Post Malone", "Juice WRLD", "ASAP Rocky", "Logic", "Childish Gambino", "Nicki Minaj"];
 
 $(document).ready(function() {
 
 
-
+// on click that runs Giphy API
 $(document.body).on("click", ".postButtons", function() {
+
   console.log(this)
   var search = $(this).attr("data-name");
   // var search = value typed into search bar
@@ -21,12 +22,11 @@ $(document.body).on("click", ".postButtons", function() {
     console.log(results)
     $("#gif-section").empty();
 
-
     for (var i = 0; i < results.length; i++) {
 
       var newDiv = $("<div>");
       // results[i].rating;
-      var p = $("<p>").html(`<span id="rating">Rating: ${results[i].rating}</span>&nbsp;&nbsp;&nbsp<span id="download" download-data="${results[i].images.original.mp4}">download</span>&nbsp;&nbsp;&nbsp;&nbsp<span id="favorite">favorite</span>`);
+      var p = $("<p id='appendSongHere'>").html(`<span id="rating">Rating: ${results[i].rating}</span>&nbsp;&nbsp<button id="download" download-data="${results[i].images.original.mp4}">download</button>&nbsp;&nbsp;&nbsp;&nbsp`);
 // initial src attribute to the still image
       var newImg = $("<img class='full'>").attr("src",results[i].images.fixed_height_still.url);
 
@@ -36,17 +36,33 @@ $(document.body).on("click", ".postButtons", function() {
 // data state of 'still' to use as a reference of the state
           newImg.attr("data-state", "still");
 
-      p.attr("id", "format-img")
+      p.attr("id", "format-controls")
       newDiv.append(p);
       newDiv.append(newImg);
       $("#gif-section").prepend(newDiv);
 
-
+      var c = $("<button id='playSong'>play song</button>")
+      c.attr("data-name",topics[i])
+      var d = $("#format-controls")
+      d.append(c)
 
     }
+
   })
 
 });
+
+
+function givePlaySongButtonData(){
+  for (var i = 0; i < topics.length; i++){
+    // var iframe = $("<iframe>");
+    var names = topics[i];
+    var playsongs = $("#playSong")
+  playsongs.attr("data-name", topics[i]);
+  // $("#playSong").append(iframe);
+  }
+}
+
 // function that forces the download button to work
 function forceDownload(url) {
        var xhr = new XMLHttpRequest();
@@ -87,13 +103,8 @@ function renderButtons() {
     b.text(topics[i]);
     // Adds the button to the buttons-view div
     $("#buttonsDiv").append(b);
-
   }
 }
-
-
-
-
 
 // submit button event click
 $("#topic-submit").on("click", function(event) {

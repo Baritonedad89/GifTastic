@@ -6,7 +6,7 @@ text-align: center;
 
 p {
   font-family: 'Calligraffitti', cursive;
-  font-size: 16px;
+  font-size: 15.5px;
   font-weight: bold;
 }
 
@@ -42,36 +42,20 @@ background: #BCC6CC;
   color: white;
 }
 
-#favorite {
+#playSong {
 background: #BCC6CC;
 border: 1px solid black;
 padding: 7px;
 font-family: 'Abel', sans-serif;
 }
 
-#favorite:hover {
+#playSong:hover {
   opacity: 0.9;
   color: white;
 }
 
 #rating {
   font-family: 'Abel', sans-serif;
-}
-
-.favorites-title {
-  font-family: 'Calligraffitti', cursive;
-}
-
-.no-display {
-  display: none;
-}
-
-#favorites {
-display: none;
-grid-template-columns: repeat(auto-fill, 80px);
-grid-template-rows: repeat(auto-fill, minmax(50px 75px));
-grid-gap: 5px;
-max-width: 570px;
 }
 
 
@@ -97,7 +81,12 @@ max-width: 570px;
   max-width: 1140px;
   grid-template-columns: repeat(auto-fill, 80px);
   grid-template-rows: repeat(auto-fill, minmax(50px 75px));
+}
 
+#format-controls {
+display: flex;
+height: 40px;
+align-items: center;
 }
 
 
