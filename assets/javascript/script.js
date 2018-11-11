@@ -26,7 +26,7 @@ $(document.body).on("click", ".postButtons", function() {
 
       var newDiv = $("<div>");
       // results[i].rating;
-      var p = $("<p id='appendSongHere'>").html(`<span id="rating">Rating: ${results[i].rating}</span>&nbsp;&nbsp<button id="download" download-data="${results[i].images.original.mp4}">download</button>&nbsp;&nbsp;&nbsp;&nbsp`);
+      var p = $("<p>").html(`<span id="rating">Rating: ${results[i].rating}</span>&nbsp;&nbsp<button class="download" download-data="${results[i].images.looping.mp4}">download</button>&nbsp;&nbsp;&nbsp;&nbsp`);
 // initial src attribute to the still image
       var newImg = $("<img class='full'>").attr("src",results[i].images.fixed_height_still.url);
 
@@ -40,28 +40,23 @@ $(document.body).on("click", ".postButtons", function() {
       newDiv.append(p);
       newDiv.append(newImg);
       $("#gif-section").prepend(newDiv);
-
-      var c = $("<button id='playSong'>play song</button>")
-      c.attr("data-name",topics[i])
-      var d = $("#format-controls")
-      d.append(c)
-
-    }
+}
 
   })
 
 });
 
-
-function givePlaySongButtonData(){
-  for (var i = 0; i < topics.length; i++){
-    // var iframe = $("<iframe>");
-    var names = topics[i];
-    var playsongs = $("#playSong")
-  playsongs.attr("data-name", topics[i]);
-  // $("#playSong").append(iframe);
-  }
-}
+// I hoped to make a youtube api so that videos would play when a button was pressed button
+// couldn't get it to work. 
+// function givePlaySongButtonData(){
+//   for (var i = 0; i < topics.length; i++){
+//     // var iframe = $("<iframe>");
+//     var names = topics[i];
+//     var playsongs = $("#playSong")
+//   playsongs.attr("data-name", topics[i]);
+//   // $("#playSong").append(iframe);
+//   }
+// }
 
 // function that forces the download button to work
 function forceDownload(url) {
@@ -82,8 +77,8 @@ function forceDownload(url) {
    }
 
 // on click function that gets the download button to work
-   $(document).on("click", "#download", function () {
-      var url = $("#download").attr('download-data')
+   $(document).on("click", ".download", function () {
+      var url = $(this).attr('download-data')
       forceDownload(url)
    })
 
